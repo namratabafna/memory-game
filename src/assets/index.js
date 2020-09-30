@@ -15,7 +15,7 @@ import A13 from "./13.svg";
 import A14 from "./14.svg";
 import A15 from "./15.svg";
 
-export let images = [
+export let images_svg = [
   {
     image:A1   
   },

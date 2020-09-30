@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import './Playfield.css'
 import Card from './Card'
-import axios from 'axios'
 import spinner from './spinner.gif'
+import {images_svg} from './assets/index'
 
 const Playfield = ({ pairs }) => {
   const pairVisibleInMilliseconds = 1500
@@ -12,13 +12,12 @@ const Playfield = ({ pairs }) => {
   const [pairsMatched, setPairsMatched] = useState(0)
   const [openedCards, setOpenedCards] = useState([])
   const [deck, setDeck] = useState([])
-  const picsumApiUrl = 'https://picsum.photos/200'
-
   useEffect(() => {
     getImages()
-  }, [])
+  }, [pairs])
 
   useEffect(() => {
+    // getImages()
     if (images.length === pairs) {
       generateCards()
       setLoading(false)
@@ -83,13 +82,9 @@ const Playfield = ({ pairs }) => {
 
   const getImages = async () => {
     let fetchedImages = []
-
-    while (fetchedImages.length < pairs) {
-      const response = await axios.get(picsumApiUrl)
-
-      if (response.request.responseURL) {
-        fetchedImages.push(response.request.responseURL)
-      }
+    let count = 0
+    while (fetchedImages.length < pairs) {     
+      fetchedImages.push(images_svg[count++])
     }
 
     setImages(fetchedImages)

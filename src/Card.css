@@ -14,12 +14,11 @@
   font-size: 32px;
   padding-top: 25px;
 }
-.card .opened .matched {
-  display: none;
-}
 
 .card.matched {
   cursor: default;
+  display: none;
+  border: none;
 }
 
 .card img {

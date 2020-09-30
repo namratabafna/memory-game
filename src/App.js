@@ -6,11 +6,11 @@ function App() {
   const [pairs, setPairs] = useState(5) 
  
   return (
-    <div className="App">
-      <div >
-      <button variant="success" value="5" >Easy</button>
-      <button variant="warning" value="10" onClick={() => setPairs(10)}>Medium</button>
-      <button variant="danger" value="25" onClick={() => setPairs(25)}>Hard</button>
+    <div>
+      <div className="btn" >
+      <button className="btn-primary" value="5" >Easy</button>
+      <button className="btn-success" value="10" onClick={() => setPairs(10)}>Medium</button>
+      <button className="btn-warning" value="25" onClick={() => setPairs(25)}>Hard</button>
       </div>
       
       <Playfield pairs={pairs} />
