@@ -8,7 +8,7 @@ const Playfield = ({ pairs }) => {
   const pairVisibleInMilliseconds = 1500
   const [loading, setLoading] = useState(true)
   const [images, setImages] = useState([])
-  const [turns, setTurns] = useState(0)
+  const [missed, setMissed] = useState(0)
   const [pairsMatched, setPairsMatched] = useState(0)
   const [openedCards, setOpenedCards] = useState([])
   const [deck, setDeck] = useState([])
@@ -70,9 +70,10 @@ const Playfield = ({ pairs }) => {
       setDeck(newDeck)
     } else {
       closeCards()
+      setMissed(missed + 1)
     }
 
-    setTurns(turns + 1)
+    
     setOpenedCards([])
   }
 
@@ -103,7 +104,7 @@ const Playfield = ({ pairs }) => {
 
   const resetGame = () => {
     generateCards()
-    setTurns(0)
+    setMissed(0)
     setPairsMatched(0)
   }
 
@@ -149,8 +150,8 @@ const Playfield = ({ pairs }) => {
       {!loading && (
         <>
           <div className="statistics">
-            <span>Turns: {turns}</span>
-            <span>Pairs: {pairsMatched} of {pairs}</span>
+            <span>Error Score: {missed}</span>
+            <span>Matches: {pairsMatched}</span>
 
             { pairsMatched === pairs && (
               <button onClick={resetGame}>New game</button>
