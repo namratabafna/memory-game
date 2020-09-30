@@ -1,0 +1,18 @@
+* {
+  box-sizing: border-box;
+}
+
+.spinner {
+  width: 100%;
+  text-align: center;
+}
+
+.spinner span {
+  font-size: 24px;
+}
+
+.statistics span {
+  display: inline-block;
+  font-size: 24px;
+  margin: 25px;
+}
