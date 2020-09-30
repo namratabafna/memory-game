@@ -1,7 +1,13 @@
 * {
   box-sizing: border-box;
 }
-
+.playfield {
+  width: 80%;
+  /* display: flex; */
+  @media screen and (min-width: 768px){
+    width: 100%
+  }
+}
 .spinner {
   width: 100%;
   text-align: center;

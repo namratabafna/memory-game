@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import './Playfield.css'
 import Card from './Card'
-import spinner from './spinner.gif'
 import axios from 'axios'
-const picsumApiUrl = 'https://picsum.photos/200'
+import spinner from './spinner.gif'
 
 const Playfield = ({ pairs }) => {
   const pairVisibleInMilliseconds = 1500
@@ -13,14 +12,14 @@ const Playfield = ({ pairs }) => {
   const [pairsMatched, setPairsMatched] = useState(0)
   const [openedCards, setOpenedCards] = useState([])
   const [deck, setDeck] = useState([])
-
-  // useEffect(() => {
-  //   getImages()
-  // }, [])
+  const picsumApiUrl = 'https://picsum.photos/200'
 
   useEffect(() => {
     getImages()
-    if (images.length === pairs) {      
+  }, [])
+
+  useEffect(() => {
+    if (images.length === pairs) {
       generateCards()
       setLoading(false)
     }
