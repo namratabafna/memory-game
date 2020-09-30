@@ -7,9 +7,9 @@ function App() {
  
   return (
     <div>
-      <div className="btn" >
-      <button className="btn-primary" value="5" >Easy</button>
-      <button className="btn-success" value="10" onClick={() => setPairs(10)}>Medium</button>
+      <div className="btn btn-lg" >
+      <button className="btn-primary mr-4" value="5" >Easy</button>
+      <button className="btn-success mr-4" value="10" onClick={() => setPairs(10)}>Medium</button>
       <button className="btn-warning" value="25" onClick={() => setPairs(25)}>Hard</button>
       </div>
       
