@@ -1,2 +1,2 @@
 # memory-game
-Memory Game for easy, medium , hard level with score
+Memory Game for easy, medium, hard level with score
