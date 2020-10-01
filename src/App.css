@@ -1,11 +1,8 @@
 * {
   box-sizing: border-box;
 }
-app {
-  display: flex;
-  flex-direction: column;
-}
 .center {
   display: flex;
   justify-content: center;
+  padding-top: 20px;
 }

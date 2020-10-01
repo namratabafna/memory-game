@@ -1,5 +1,6 @@
 import React from 'react'
 import './Card.css'
+import preview from './assets/index.js'
 
 const Card = ({ card, onCardOpen }) => {
 
@@ -13,10 +14,10 @@ const Card = ({ card, onCardOpen }) => {
     if (card.matched) {
       return
     } else if (card.open) {
-      return <img src={card.image} />
+      return <img src={card.image} alt="Memory"/>
     }
 
-    return <div className="not-opened">?</div>
+    return <img src={preview} alt="*" className="not-opened"></img>
   }
 
   return (

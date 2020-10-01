@@ -50,6 +50,25 @@ const Playfield = ({ pairs }) => {
     }
   }, [images])
 
+  useEffect(() => {
+    if(pairsMatched === pairs)
+    {
+      //Call API
+      save()
+      toggle() 
+    }
+  }, [pairsMatched,pairs])
+
+  const save = () => {
+    fetch('http://localhost:59544/api/Employee')
+      .then(res => res.json())
+      .then(
+        //Code to save player details against unique id can go here.
+        (result) => {
+          alert("Congratulations! You won.")
+        }
+      );
+  }
   const openCard = (card) => {
     // Don't open the card if we already have 2 cards face up
     if (openedCards.length === 2) {
@@ -180,13 +199,20 @@ const Playfield = ({ pairs }) => {
           { pairsMatched === pairs && (
               <button type="button" class="btn btn-info active mr-3" onClick={resetGame}>New game</button>
             )}
+          {/* <button className={`button button-primary mr-3`} onClick={toggle}>
+          {isActive ? 'Pause' : 'Start'}
+        </button> */}
+        {/* <button className="button" onClick={reset}>
+          Reset Timer
+        </button> */}
         </div>
             <div className="labelspacing font-weight-bold">
             <span>Error Score: {missed}</span>
             <span>Matches: {pairsMatched}</span>
             <span>Elapsed time: {seconds}</span>
             </div>
-          { deck.map(card => {
+            <div className="card-layout">
+            { deck.map(card => {
               return <Card
                 key={card.number}
                 card={card}
@@ -194,6 +220,8 @@ const Playfield = ({ pairs }) => {
               />
             })
           }
+            </div>
+          
         </>
       )}
     </div>
