@@ -12,15 +12,41 @@ const Playfield = ({ pairs }) => {
   const [pairsMatched, setPairsMatched] = useState(0)
   const [openedCards, setOpenedCards] = useState([])
   const [deck, setDeck] = useState([])
+  const [seconds, setSeconds] = useState(0);
+  const [isActive, setIsActive] = useState(false); 
+
+  useEffect(() => {
+    let interval = null;
+    if(isActive) {
+      interval = setInterval(() => {
+        setSeconds(seconds => seconds + 1);
+      }, 1000);
+      
+    }
+    else if (!isActive && seconds !== 0) {
+      clearInterval(interval);
+    }
+    return () => clearInterval(interval);
+    
+  }, [isActive, seconds]);
+
+  const reset = () => {
+    setSeconds(0);
+    setIsActive(false);
+  }
+
+  const toggle = () => {
+    setIsActive(!isActive);
+  }  
   useEffect(() => {
     getImages()
   }, [pairs])
 
   useEffect(() => {
-    // getImages()
     if (images.length === pairs) {
       generateCards()
       setLoading(false)
+      toggle()
     }
   }, [images])
 
@@ -103,6 +129,7 @@ const Playfield = ({ pairs }) => {
   }
 
   const resetGame = () => {
+    reset()
     generateCards()
     setMissed(0)
     setPairsMatched(0)
@@ -149,15 +176,16 @@ const Playfield = ({ pairs }) => {
 
       {!loading && (
         <>
-          <div className="statistics">
+        <div className="center">
+          { pairsMatched === pairs && (
+              <button type="button" class="btn btn-info active mr-3" onClick={resetGame}>New game</button>
+            )}
+        </div>
+            <div className="labelspacing font-weight-bold">
             <span>Error Score: {missed}</span>
             <span>Matches: {pairsMatched}</span>
-
-            { pairsMatched === pairs && (
-              <button onClick={resetGame}>New game</button>
-            )}
-          </div>
-
+            <span>Elapsed time: {seconds}</span>
+            </div>
           { deck.map(card => {
               return <Card
                 key={card.number}
