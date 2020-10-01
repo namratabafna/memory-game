@@ -29,7 +29,9 @@ the game started and the player’s error score.
 
 
 ● Stack for implementation
+
 ○ Client: React.JS
+
 ○ Server: C# ASP.NET Core
 
 # memory-game features demo
