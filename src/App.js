@@ -3,7 +3,7 @@ import Playfield from './Playfield'
 import './App.css'
 
 function App() {
-  const [pairs, setPairs] = useState(1)
+  const [pairs, setPairs] = useState(5)
  
   return (
     <div>
