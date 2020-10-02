@@ -24,8 +24,8 @@ If the cards don’t match, the card’s content should hide.
 Once all tiles are guessed, a REST API is called to store details on the server.
 
 OUTPUT:
-The game ends when all cards are matched. Show clearly to the player the elapsed time since
-the game started and the player’s error score.
+The game ends when all cards are matched. The player can see the elapsed time since
+the game started, player’s error score and total matches.
 
 
 ● Stack for implementation
@@ -40,3 +40,8 @@ the game started and the player’s error score.
 # memory-game responsive UI demo
 ![Responsive UI](https://github.com/namratabafna/memory-game/blob/master/MemoryGame-Responsive.gif)
 
+
+# memory-game How to run the application
+npm install
+
+npm run start.
